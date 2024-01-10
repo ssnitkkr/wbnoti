@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const serverless = require('serverless-http');
+
 
 
 
@@ -120,15 +120,9 @@ function sendOrderToOwner(messageToOwner) {
     });
 }
 
-// Listen for incoming messages from users
 
-const port = process.env.PORT || 8000;
-
-
-app.use('/.netlify/functions/api', router);
-module.exports.handler = serverless(app);
-// app.listen(port, () => {
-//     console.log(`Server is running on http://localhost:${8000}`);
-// });
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on http://localhost:${8000}`);
+});
 
 
